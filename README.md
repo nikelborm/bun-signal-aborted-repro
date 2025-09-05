@@ -1,4 +1,4 @@
-# tmp.mtdr2bnskx
+# bun-signal-aborted-repro
 
 To install dependencies:
 
@@ -12,4 +12,38 @@ To run:
 bun run index.ts
 ```
 
-This project was created using `bun init` in bun v1.2.20. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+You'll see that code in `index.ts` works fine and outputs:
+
+```plaintext
+
+```
+
+But the typescript is complaining `Property 'aborted' does not exist on type 'AbortSignal'. ts(2339)`
+
+```bash
+# Clone the repro repo
+git clone https://github.com/nikelborm/bun-signal-aborted-repro.git
+
+cd bun-signal-aborted-repro
+
+# Works fine as expected
+bun run index.ts
+# Outputs:
+# 1 signal.aborted:  false
+# 2 signal.aborted:  true
+
+./node_modules/.bin/tsc
+# Fails with:
+# index.ts:3:42 - error TS2339: Property 'aborted' does not exist on type 'AbortSignal'.
+#
+# 3 console.log('1 signal.aborted: ', signal.aborted);
+#                                            ~~~~~~~
+#
+# index.ts:6:44 - error TS2339: Property 'aborted' does not exist on type 'AbortSignal'.
+#
+# 6   console.log('2 signal.aborted: ', signal.aborted);
+#                                              ~~~~~~~
+#
+#
+# Found 2 errors in the same file, starting at: index.ts:3
+```
