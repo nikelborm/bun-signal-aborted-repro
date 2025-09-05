@@ -6,19 +6,7 @@ To install dependencies:
 bun install
 ```
 
-To run:
-
-```bash
-bun run index.ts
-```
-
-You'll see that code in `index.ts` works fine and outputs:
-
-```plaintext
-
-```
-
-But the typescript is complaining `Property 'aborted' does not exist on type 'AbortSignal'. ts(2339)`
+To repro:
 
 ```bash
 # Clone the repro repo
