@@ -1,18 +1,13 @@
 # bun-signal-aborted-repro
 
-To install dependencies:
-
-```bash
-bun install
-```
-
-To repro:
-
 ```bash
 # Clone the repro repo
 git clone https://github.com/nikelborm/bun-signal-aborted-repro.git
 
 cd bun-signal-aborted-repro
+
+# Install dependencies
+bun install
 
 # Works fine as expected
 bun run index.ts
